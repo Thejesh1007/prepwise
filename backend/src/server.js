@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 
 const authRoutes = require("./routes/auth");
+const generateRoutes = require("./routes/generate");
+const historyRoutes = require("./routes/history");
 
 const app = express();
 
@@ -14,6 +16,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/generate", generateRoutes);
+app.use("/api/history", historyRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
